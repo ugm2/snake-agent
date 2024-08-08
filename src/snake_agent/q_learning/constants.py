@@ -7,5 +7,6 @@ LR_DECAY = 0.999
 MIN_LR = 0.001
 
 Q_TABLE_SAVE_PATH = "models/q_learning/q_table.pkl"
+Q_ALGORITHM_EVALUATION_PATH = "models/q_learning/"
 
 TRAINING_EPISODES = 1000000

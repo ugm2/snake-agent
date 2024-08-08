@@ -18,7 +18,8 @@ def main(agent_file=None):
 
     # Initialize the game with or without an agent
     game = Game(agent=agent, render=True)
-    game.run()
+    total_reward, score = game.run()
+    print(f'Total reward: {total_reward}, score: {score}')
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Play Snake game manually or with a trained agent.")

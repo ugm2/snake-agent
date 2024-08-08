@@ -4,7 +4,14 @@ import os
 import pygame
 
 from .board import Board
-from .constants import BOARD_HEIGHT, BOARD_WIDTH, DIRECTION_MAP, GRID_SIZE, SNAKE_SPEED
+from .constants import (
+    BOARD_HEIGHT,
+    BOARD_WIDTH,
+    DIRECTION_MAP,
+    GRID_SIZE,
+    MIN_REWARD,
+    SNAKE_SPEED,
+)
 from .food import Food
 from .player import DEFAULT_PLAYER_NAME, Player
 from .reward import Reward
@@ -13,7 +20,7 @@ from .snake import Snake
 logging.basicConfig(level=os.environ.get("LOGLEVEL", "INFO"))
 
 class Game:
-    def __init__(self, width=BOARD_WIDTH, height=BOARD_HEIGHT, grid_size=GRID_SIZE, agent=None, render=True):
+    def __init__(self, width=BOARD_WIDTH, height=BOARD_HEIGHT, grid_size=GRID_SIZE, min_reward=MIN_REWARD,agent=None, render=True):
         self.render = render
         if self.render:
             pygame.init()
@@ -26,6 +33,7 @@ class Game:
         self.running = True
         self.agent = agent
         self.reward_system = Reward()
+        self.min_reward = min_reward
         
     def get_state(self):
         snake_head = self.snake.positions[0]
@@ -139,9 +147,13 @@ class Game:
             if self.render:
                 self.clock.tick(self.snake_speed)
                 pygame.event.pump()
+                
+            if total_reward <= self.min_reward:
+                logging.info("Total reward is too low. Terminating the game.")
+                self.running = False
 
         if self.render:
             pygame.quit()
         
-        logging.debug(f'Total reward: {total_reward}, Score: {self.player.get_score()}')
+        logging.info(f'Total reward: {total_reward}, Score: {self.player.get_score()}')
         return total_reward, self.player.get_score()
