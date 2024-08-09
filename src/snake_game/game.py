@@ -5,6 +5,7 @@ import pygame
 
 from .board import Board
 from .constants import (
+    AGENT_DIRECTION_MAP,
     BOARD_HEIGHT,
     BOARD_WIDTH,
     DIRECTION_MAP,
@@ -92,13 +93,7 @@ class Game:
             current_state = self.get_state()
             action = self.agent.get_action(current_state)
 
-            action_to_direction = {
-                "UP": (0, -1),
-                "DOWN": (0, 1),
-                "LEFT": (-1, 0),
-                "RIGHT": (1, 0),
-            }
-            self.snake.set_direction(action_to_direction[action])
+            self.snake.set_direction(AGENT_DIRECTION_MAP[action])
 
         self.snake.move()
 

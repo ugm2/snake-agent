@@ -35,5 +35,11 @@ DIRECTION_MAP: Dict[int, Tuple[int, int]] = {
     pygame.K_LEFT: LEFT,
     pygame.K_RIGHT: RIGHT,
 }
+AGENT_DIRECTION_MAP = {
+    "UP": UP,
+    "DOWN": DOWN,
+    "LEFT": LEFT,
+    "RIGHT": RIGHT
+}
 
 ACTION_SPACE = ["UP", "DOWN", "LEFT", "RIGHT"]
