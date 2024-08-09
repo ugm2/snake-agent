@@ -4,6 +4,7 @@ import argparse
 
 from snake_agent.evaluation import Evaluator
 from snake_agent.q_learning.constants import (
+    EVALUATION_EPISODES,
     Q_ALGORITHM_EVALUATION_PATH,
     Q_TABLE_SAVE_PATH,
     TRAINING_EPISODES,
@@ -26,7 +27,7 @@ def main():
     trainer.train()
     
     # Evaluate the agent after training
-    evaluator = Evaluator(agent=agent, episodes=1000, save_path=Q_ALGORITHM_EVALUATION_PATH)
+    evaluator = Evaluator(agent=agent, episodes=EVALUATION_EPISODES, save_path=Q_ALGORITHM_EVALUATION_PATH)
     metrics = evaluator.evaluate()
     print(metrics)
 

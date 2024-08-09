@@ -17,7 +17,7 @@ from .player import DEFAULT_PLAYER_NAME, Player
 from .reward import Reward
 from .snake import Snake
 
-logging.basicConfig(level=os.environ.get("LOGLEVEL", "INFO"))
+logging.basicConfig(level=os.environ.get("LOGLEVEL", "WARNING"))
 
 class Game:
     def __init__(self, width=BOARD_WIDTH, height=BOARD_HEIGHT, grid_size=GRID_SIZE, min_reward=MIN_REWARD,agent=None, render=True):

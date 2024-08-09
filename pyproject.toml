@@ -8,6 +8,7 @@ packages = [{ include = "snake_game", from = "src" }]
 [tool.poetry.dependencies]
 python = "^3.10"
 pygame = "^2.6.0"
+tqdm = "^4.66.5"
 
 
 [build-system]

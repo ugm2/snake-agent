@@ -5,6 +5,7 @@ from statistics import mean
 
 from snake_game.game import Game
 
+logging.basicConfig(level=os.environ.get("LOGLEVEL", "WARNING"))
 
 class Evaluator:
     def __init__(self, agent, episodes=100, save_path="models/q_learning/"):

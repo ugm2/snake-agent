@@ -16,7 +16,7 @@ from .constants import (
     MIN_LR,
 )
 
-logging.basicConfig(level=os.environ.get("LOGLEVEL", "INFO"))
+logging.basicConfig(level=os.environ.get("LOGLEVEL", "WARNING"))
 
 class QLearningAgent:
     def __init__(self, action_space=ACTION_SPACE, state_space=None, train=True, learning_rate=LEARNING_RATE, discount_factor=DISCOUNT_FACTOR, 
